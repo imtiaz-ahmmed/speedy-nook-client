@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+  @apply text-black font-bold bg-green-300;
+}
+
+.default {
+  @apply text-black;
+}
