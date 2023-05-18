@@ -4,9 +4,9 @@ import "aos/dist/aos.css";
 AOS.init();
 const Gallery = () => {
   return (
-    <div>
-      <h2 className="font-bold text-center text-5xl text-green-400 mb-12 ">
-        All Cool Cars
+    <div className="pt-4 pb-4 bg-cyan-100">
+      <h2 className="font-bold text-center text-5xl text-green-400 mb-12 mt-8">
+        Speedy Corner
       </h2>
       <div className="grid grid-cols-1  lg:grid-cols-3">
         <div
@@ -83,7 +83,7 @@ const Gallery = () => {
           />
         </div>
         <div
-          className="bg-pink-200 p-4"
+          className="bg-stone-200 p-4"
           data-aos="flip-right"
           data-aos-easing="ease-out-cubic"
           data-aos-duration="1500"
@@ -95,7 +95,7 @@ const Gallery = () => {
           />
         </div>
         <div
-          className="bg-purple-200 p-4"
+          className="bg-pink-200 p-4"
           data-aos="fade-down"
           data-aos-easing="linear"
           data-aos-duration="1500"
