@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .active {
-  @apply text-black font-bold bg-green-300;
+  @apply text-white font-bold bg-green-400;
 }
 
 .default {

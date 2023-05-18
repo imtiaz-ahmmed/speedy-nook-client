@@ -45,7 +45,7 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-6 items-center">
             <Link to="/">
               {" "}
               <img className="h-12 rounded-full" src={logo} alt="" />
@@ -96,13 +96,13 @@ const Header = () => {
                 to="/blogs"
                 className={({ isActive }) => (isActive ? "active" : "default")}
               >
-                Blog
+                Blogs
               </NavLink>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <button className="btn bg-green-400 hover:bg-green-500 p-4 rounded-lg border-none">
+          <button className="btn bg-green-400 hover:bg-green-500 rounded-lg border-none text-lg ">
             Login
           </button>
         </div>
