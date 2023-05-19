@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../../../public/logocar.jpg";
 import { Link, NavLink } from "react-router-dom";
-
+import { AuthContext } from "../../../providers/AuthProviders";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
 const Header = () => {
   return (
     <div>
@@ -102,11 +104,30 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <NavLink to="/login">
+          {/* <NavLink to="/login">
             <button className="btn bg-green-400 hover:bg-green-500 rounded-lg border-none text-lg ">
               Login
             </button>
-          </NavLink>
+          </NavLink> */}
+          {user ? (
+            <div className="flex gap-2 items-center ">
+              <img
+                className="h-12 w-12 lg:h-20 lg:w-20 rounded-full "
+                src={user.photoURL ? user.photoURL : ""}
+                alt=""
+                data-tooltip-id="user-name"
+                data-tooltip-content={user.displayName ? user.displayName : ""}
+              />
+              <Tooltip id="user-name" />
+              <button onClick={handleLogOut} className="btn bg-yellow-700">
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link to={"/login"}>
+              <button className="btn bg-yellow-700">Login</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

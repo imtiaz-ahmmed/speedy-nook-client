@@ -1,9 +1,50 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
+import { AuthContext } from "../../providers/AuthProviders";
 const Login = () => {
   useTitle("Speedy Nook | Login");
+  const { signIn, googleSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [loginError, setLoginError] = useState("");
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        setLoginError("");
+        console.log(loggedUser);
+        form.reset;
+        alert("Login Successful");
+        //navigate(from, { replace: true });
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setLoginError(errorMessage);
+        console.log(error);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        //navigate(from, { replace: true });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -16,7 +57,7 @@ const Login = () => {
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form className="card-body">
+          <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -46,12 +87,18 @@ const Login = () => {
                 </a>
               </label>
             </div>
+            <p className="text-red-600 ">
+              <small>{loginError}</small>
+            </p>
             <div className="form-control mt-6">
               <button className="btn bg-green-400 hover:bg-green-500 rounded-lg border-none text-md ">
                 Login to your account
               </button>
               <br />
-              <button className="btn bg-blue-400 hover:bg-blue-500 rounded-lg border-none text-md ">
+              <button
+                onClick={handleGoogleSignIn}
+                className="btn bg-blue-400 hover:bg-blue-500 rounded-lg border-none text-md "
+              >
                 <FaGoogle />
                 &nbsp;&nbsp;Login with Google
               </button>

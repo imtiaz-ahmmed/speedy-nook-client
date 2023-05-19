@@ -1,9 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const Register = () => {
   useTitle("Speedy Nook | Register");
+  const { createUser, updateUser, logOut } = useContext(AuthContext);
+  const [registerError, setRegisterError] = useState("");
+  const navigate = useNavigate();
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    createUser(email, password)
+      .then(() => {
+        alert("Registration Completed Successfully");
+        updateUser(name, photo);
+        setRegisterError("");
+        logOut();
+        navigate("/login");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setRegisterError(errorMessage);
+        console.log(errorMessage);
+      });
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -16,7 +43,7 @@ const Register = () => {
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form className="card-body">
+          <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -47,7 +74,7 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                name="photoURL"
+                name="photo"
                 placeholder="enter your url"
                 className="input input-bordered"
                 required
@@ -70,6 +97,9 @@ const Register = () => {
                 </a>
               </label>
             </div>
+            <p className="text-red-600 ">
+              <small>{registerError}</small>
+            </p>
             <div className="form-control mt-6">
               <button className="btn bg-green-400 hover:bg-green-500 rounded-lg border-none text-md ">
                 Register to your account
