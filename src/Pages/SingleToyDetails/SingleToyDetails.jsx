@@ -1,8 +1,10 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { StarIcon } from "@heroicons/react/24/solid";
+import useTitle from "../../Hooks/useTitle";
 
 const SingleToyDetails = () => {
+  useTitle("Speedy Nook | Details");
   const details = useLoaderData();
   const {
     toyPictureURL,

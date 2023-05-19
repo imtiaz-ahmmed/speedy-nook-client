@@ -9,3 +9,7 @@
 .default {
   @apply text-black;
 }
+
+/* * {
+  border: 1px solid red;
+} */
