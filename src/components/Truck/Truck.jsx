@@ -7,10 +7,14 @@ const Truck = ({ truck }) => {
   return (
     <div>
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
-        <figure>
+        <figure
+          data-aos="fade-down"
+          data-aos-easing="linear"
+          data-aos-duration="1500"
+        >
           <img className="h-72 w-full" src={toyPictureURL} alt="Sports car" />
         </figure>
-        <div className="card-body">
+        <div className="card-body" data-aos="fade-up" data-aos-duration="1500">
           <h2 className="card-title text-teal-400 text-2xl ">{toyName}</h2>
           <p className="text-lg">Price : {price} $</p>
           <p>

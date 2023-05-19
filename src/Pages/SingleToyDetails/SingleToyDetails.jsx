@@ -17,7 +17,7 @@ const SingleToyDetails = () => {
     detailDescription,
   } = details;
   return (
-    <div className="p-12">
+    <div className="p-12 bg-slate-100">
       <div className="card w-96 bg-base-100 shadow-xl mx-auto">
         <div className="card-body">
           <h2 className="card-title text-green-400 text-3xl">{toyName}</h2>
