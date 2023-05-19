@@ -4,6 +4,7 @@ import "react-tabs/style/react-tabs.css";
 import SportsCar from "../SportsCar/SportsCar";
 import Truck from "../Truck/Truck";
 import MiniFireTruck from "../../MiniFireTruck/MiniFireTruck";
+
 const Category = () => {
   const [sportsCars, setSportsCars] = useState([]);
   const [trucks, setTrucks] = useState([]);

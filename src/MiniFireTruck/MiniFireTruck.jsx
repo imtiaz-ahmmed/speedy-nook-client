@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { AuthContext } from "../providers/AuthProviders";
+
 const MiniFireTruck = ({ miniFireTruck }) => {
   const { _id, toyPictureURL, toyName, price, rating } = miniFireTruck;
   const { user } = useContext(AuthContext);
