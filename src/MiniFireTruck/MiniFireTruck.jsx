@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { StarIcon } from "@heroicons/react/24/solid";
 const MiniFireTruck = ({ miniFireTruck }) => {
   const { _id, toyPictureURL, toyName, price, rating } = miniFireTruck;
   return (
@@ -12,9 +12,12 @@ const MiniFireTruck = ({ miniFireTruck }) => {
         <div className="card-body">
           <h2 className="card-title text-teal-400 text-2xl ">{toyName}</h2>
           <p className="text-lg">Price : {price} $</p>
-          <p>Ratings: {rating}</p>
+          <p>
+            Ratings: {rating}{" "}
+            <StarIcon className="inline-block h-6 w-6 text-blue-500" />
+          </p>
           <div className="card-actions justify-end">
-            <Link to={`/details/subCategory/sportsCars/${_id}`}>
+            <Link to={`/details/subCategory/${_id}`}>
               <button className="btn bg-green-400 hover:bg-green-500 rounded-lg border-none text-md ">
                 View Details
               </button>

@@ -3,6 +3,7 @@ import Main from "../Layouts/Main";
 import ErrorPage from "../Pages/ErrorPage/Errorpage";
 import Home from "../Pages/Home/Home";
 import Blogs from "../Pages/Blogs/Blogs";
+import SingleToyDetails from "../Pages/SingleToyDetails/SingleToyDetails";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,12 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs></Blogs>,
+      },
+      {
+        path: "/details/subCategory/:id",
+        element: <SingleToyDetails></SingleToyDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/details/subCategory/${params.id}`),
       },
     ],
   },
