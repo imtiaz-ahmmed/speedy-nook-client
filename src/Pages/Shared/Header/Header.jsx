@@ -36,26 +36,43 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/all-toys">All Toys</NavLink>
-              </li>
-              <li>
-                <NavLink to="/my-toys">My toys</NavLink>
-              </li>
-              <li>
-                <NavLink to="/add-toys">Add a Toy</NavLink>
-              </li>
-              <li>
-                <NavLink to="/blogs">Blogs</NavLink>
-              </li>
+              {user ? (
+                <span>
+                  {" "}
+                  <li>
+                    <NavLink to="/">Home</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/all-toys">All Toys</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/my-toys">My toys</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/add-toys">Add a Toy</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/blogs">Blogs</NavLink>
+                  </li>
+                </span>
+              ) : (
+                <span>
+                  {" "}
+                  <li>
+                    <NavLink to="/">Home</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/all-toys">All Toys</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/blogs">Blogs</NavLink>
+                  </li>
+                </span>
+              )}
             </ul>
           </div>
           <div className="flex gap-6 items-center">
             <Link to="/">
-              {" "}
               <img className="h-12 rounded-full" src={logo} alt="" />
             </Link>
             <a href="/" className=" normal-case text-xl lg:text-3xl font-bold">
@@ -66,55 +83,98 @@ const Header = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li className="text-lg">
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="text-lg">
-              <NavLink
-                to="/all-toys"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                All Toys
-              </NavLink>
-            </li>
-            <li className="text-lg">
-              <NavLink
-                to="/my-toys"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                My Toys
-              </NavLink>
-            </li>
-            <li className="text-lg">
-              <NavLink
-                to="/add-toys"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Add a Toy
-              </NavLink>
-            </li>
+            {user ? (
+              <>
+                <li className="text-lg">
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "default"
+                    }
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li className="text-lg">
+                  <NavLink
+                    to="/all-toys"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "default"
+                    }
+                  >
+                    All Toys
+                  </NavLink>
+                </li>
+                <li className="text-lg">
+                  <NavLink
+                    to="/my-toys"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "default"
+                    }
+                  >
+                    My Toys
+                  </NavLink>
+                </li>
+                <li className="text-lg">
+                  <NavLink
+                    to="/add-toys"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "default"
+                    }
+                  >
+                    Add a Toy
+                  </NavLink>
+                </li>
 
-            <li className="text-lg">
-              <NavLink
-                to="/blogs"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Blogs
-              </NavLink>
-            </li>
+                <li className="text-lg">
+                  <NavLink
+                    to="/blogs"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "default"
+                    }
+                  >
+                    Blogs
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="text-lg">
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "default"
+                    }
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li className="text-lg">
+                  <NavLink
+                    to="/all-toys"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "default"
+                    }
+                  >
+                    All Toys
+                  </NavLink>
+                </li>
+
+                <li className="text-lg">
+                  <NavLink
+                    to="/blogs"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "default"
+                    }
+                  >
+                    Blogs
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
-          {/* <NavLink to="/login">
-            <button className="btn bg-green-400 hover:bg-green-500 rounded-lg border-none text-lg ">
-              Login
-            </button>
-          </NavLink> */}
           {user ? (
             <div className="flex gap-2 items-center ">
               <img
@@ -125,13 +185,18 @@ const Header = () => {
                 data-tooltip-content={user.displayName ? user.displayName : ""}
               />
               <Tooltip id="user-name" />
-              <button onClick={handleLogOut} className="btn bg-yellow-700">
+              <button
+                onClick={handleLogOut}
+                className="btn bg-green-400 hover:bg-green-500 border-none"
+              >
                 Logout
               </button>
             </div>
           ) : (
             <Link to={"/login"}>
-              <button className="btn bg-yellow-700">Login</button>
+              <button className="btn bg-green-400 hover:bg-green-500 border-none">
+                Login
+              </button>
             </Link>
           )}
         </div>

@@ -30,7 +30,11 @@ const SingleToyDetails = () => {
           </p>
         </div>
         <figure>
-          <img className="h-96 w-full" src={toyPictureURL} alt="Shoes" />
+          {toyPictureURL ? (
+            <img className="h-96 w-full" src={toyPictureURL} alt="Shoes" />
+          ) : (
+            "Picture is Loading"
+          )}
         </figure>
       </div>
     </div>

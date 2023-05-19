@@ -7,7 +7,9 @@ import SingleToyDetails from "../Pages/SingleToyDetails/SingleToyDetails";
 import AllToys from "../Pages/AllToys/AllToys";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-
+import PrivateRoute from "./privateRoute";
+import MyToys from "../Pages/MyToys/MyToys";
+import AddToys from "../Pages/AddToys/AddToys";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +20,23 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
+      {
+        path: "/my-toys",
+        element: (
+          <PrivateRoute>
+            <MyToys></MyToys>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/add-toys",
+        element: (
+          <PrivateRoute>
+            <AddToys></AddToys>
+          </PrivateRoute>
+        ),
+      },
+
       {
         path: "/blogs",
         element: <Blogs></Blogs>,
@@ -35,7 +54,11 @@ const router = createBrowserRouter([
 
       {
         path: "/details/subCategory/:id",
-        element: <SingleToyDetails></SingleToyDetails>,
+        element: (
+          <PrivateRoute>
+            <SingleToyDetails></SingleToyDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/details/subCategory/${params.id}`),
       },
