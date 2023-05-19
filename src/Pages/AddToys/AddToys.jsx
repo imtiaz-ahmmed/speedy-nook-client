@@ -27,8 +27,18 @@ const AddToys = () => {
       price: price,
       rating: rating,
       availableQuantity: availableQuantity,
+      detailDescription: detailDescription,
     };
-    console.log(toyDetails);
+
+    fetch("http://localhost:5000/details", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(toyDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
   return (
     <div>
