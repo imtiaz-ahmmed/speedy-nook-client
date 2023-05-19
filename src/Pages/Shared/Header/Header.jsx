@@ -5,6 +5,12 @@ import { AuthContext } from "../../../providers/AuthProviders";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <div className="navbar bg-green-100 p-3 lg:p-6">
