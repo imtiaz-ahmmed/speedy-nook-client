@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { StarIcon } from "@heroicons/react/24/solid";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const SportsCar = ({ sportsCar }) => {
   const { _id, toyPictureURL, toyName, price, rating } = sportsCar;
-
+  const { user } = useContext(AuthContext);
+  const handleDetails = () => {
+    if (!user) {
+      alert("You have to log in first to view details");
+    }
+  };
   return (
     <div>
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
@@ -24,7 +30,10 @@ const SportsCar = ({ sportsCar }) => {
           </p>
           <div className="card-actions justify-end">
             <Link to={`/details/subCategory/${_id}`}>
-              <button className="btn bg-green-400 hover:bg-green-500 rounded-lg border-none text-md ">
+              <button
+                onClick={handleDetails}
+                className="btn bg-green-400 hover:bg-green-500 rounded-lg border-none text-md "
+              >
                 View Details
               </button>
             </Link>

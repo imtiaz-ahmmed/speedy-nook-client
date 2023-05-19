@@ -5,32 +5,46 @@ import AllToysRow from "./AllToysRow";
 const AllToys = () => {
   useTitle("Speedy Nook | All Toys");
   const [allToys, setAllToys] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:5000/details")
       .then((res) => res.json())
-      .then((data) => setAllToys(data));
+      .then((data) => {
+        setAllToys(data);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
     <div className="overflow-x-auto w-full p-12">
-      <table className="table mx-auto ">
-        <thead>
-          <tr>
-            <th>Seller Name</th>
-            <th>Toy Name</th>
-            <th>Sub Category</th>
-            <th>Price</th>
-            <th>Available Quantity</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {allToys.map((allToy) => (
-            <AllToysRow key={allToy._id} allToy={allToy} />
-          ))}
-        </tbody>
-      </table>
+      {isLoading ? (
+        <div className="text-center">
+          <img
+            className="h-40 w-40  mx-auto"
+            src="https://cdn.pixabay.com/animation/2022/10/11/03/16/03-16-39-160_512.gif"
+            alt=""
+          />
+        </div>
+      ) : (
+        <table className="table mx-auto">
+          <thead>
+            <tr>
+              <th>Seller Name</th>
+              <th>Toy Name</th>
+              <th>Sub Category</th>
+              <th>Price</th>
+              <th>Available Quantity</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {allToys.map((allToy) => (
+              <AllToysRow key={allToy._id} allToy={allToy} />
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

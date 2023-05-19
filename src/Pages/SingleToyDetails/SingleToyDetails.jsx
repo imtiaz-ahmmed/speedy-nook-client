@@ -18,7 +18,7 @@ const SingleToyDetails = () => {
   } = details;
   return (
     <div className="p-12 bg-slate-100">
-      <div className="card w-96 bg-base-100 shadow-xl mx-auto">
+      <div className="card w-p6 md:w-1/2 bg-base-100 shadow-xl mx-auto">
         <div className="card-body">
           <h2 className="card-title text-green-400 text-3xl">{toyName}</h2>
           <em className="font-bold">Seller Name : {sellerName}</em>
@@ -27,6 +27,10 @@ const SingleToyDetails = () => {
           <p>
             Rating : {rating}{" "}
             <StarIcon className="inline-block h-6 w-6 text-blue-500" />
+          </p>
+          <p>Available Quantity : {availableQuantity}</p>
+          <p className="font-bold text-gray-600 text-justify">
+            <small>"{detailDescription}"</small>
           </p>
         </div>
         <figure>
