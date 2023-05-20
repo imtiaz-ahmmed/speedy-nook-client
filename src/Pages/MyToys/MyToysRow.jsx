@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyToysRow = ({ myToy }) => {
+const MyToysRow = ({ myToy, handleDelete }) => {
   const {
     _id,
     toyPhotoURL,
@@ -44,7 +44,12 @@ const MyToysRow = ({ myToy }) => {
         <button className="btn btn-success btn-xs text-white">Update</button>
       </td>
       <td data-label="Delete">
-        <button className="btn btn-success btn-xs text-white">Delete</button>
+        <button
+          onClick={() => handleDelete(_id)}
+          className="btn btn-success btn-xs text-white"
+        >
+          Delete
+        </button>
       </td>
     </tr>
   );

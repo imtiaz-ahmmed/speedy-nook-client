@@ -42,7 +42,7 @@ const AddToys = () => {
         console.log(data);
         if (data.acknowledged == true) {
           alert("Toy Added");
-          // form.reset();
+          form.reset();
         } else {
           alert("Waring! Failed to Add.");
         }
