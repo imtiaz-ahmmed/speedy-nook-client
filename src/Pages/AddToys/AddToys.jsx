@@ -38,7 +38,15 @@ const AddToys = () => {
       body: JSON.stringify(toyDetails),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged == true) {
+          alert("Toy Added");
+          // form.reset();
+        } else {
+          alert("Waring! Failed to Add.");
+        }
+      });
   };
   return (
     <div>
