@@ -1,8 +1,10 @@
 import React from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTitle from "../../Hooks/useTitle";
 const MyToyInfoUpdate = () => {
   const navigate = useNavigate();
+  useTitle("Speedy Nook | Update");
   const toy = useLoaderData();
   const { _id, price, availableQuantity, detailDescription } = toy;
   const handleUpdateToy = (event) => {
