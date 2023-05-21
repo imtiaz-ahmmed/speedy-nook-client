@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import SportsCar from "../SportsCar/SportsCar";
 import Truck from "../Truck/Truck";
-import MiniFireTruck from "../../MiniFireTruck/MiniFireTruck";
+import MiniFireTruck from "../MiniFireTruck/MiniFireTruck";
 
 const Category = () => {
   const [sportsCars, setSportsCars] = useState([]);

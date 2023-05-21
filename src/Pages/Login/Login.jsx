@@ -1,15 +1,17 @@
 import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from "sweetalert2";
 const Login = () => {
   useTitle("Speedy Nook | Login");
+  const location = useLocation();
   const { signIn, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState("");
 
+  const from = location.state?.from?.pathname || "/";
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -30,7 +32,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;

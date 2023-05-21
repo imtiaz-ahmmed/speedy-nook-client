@@ -4,10 +4,18 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
+import Swal from "sweetalert2";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
-    logOut()
+    logOut();
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Log Out Successful!",
+      showConfirmButton: false,
+      timer: 1500,
+    })
       .then()
       .catch((error) => console.log(error));
   };

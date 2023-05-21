@@ -2,13 +2,21 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { AuthContext } from "../../providers/AuthProviders";
-
+import Swal from "sweetalert2";
 const Truck = ({ truck }) => {
   const { _id, toyPictureURL, toyName, price, rating } = truck;
   const { user } = useContext(AuthContext);
   const handleDetails = () => {
     if (!user) {
-      alert("You have to log in first to view details");
+      Swal.fire({
+        title: "You have to log in first to view details",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
     }
   };
 
