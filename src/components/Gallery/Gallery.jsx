@@ -4,7 +4,7 @@ import "aos/dist/aos.css";
 AOS.init();
 const Gallery = () => {
   return (
-    <div className="pt-4 pb-4 bg-cyan-100">
+    <div className="p-4 bg-cyan-100">
       <h2 className="font-bold text-center text-5xl text-green-400 mb-4 mt-8">
         Speedy Corner
       </h2>
