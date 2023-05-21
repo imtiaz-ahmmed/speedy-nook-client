@@ -9,21 +9,36 @@ const Category = () => {
   const [sportsCars, setSportsCars] = useState([]);
   const [trucks, setTrucks] = useState([]);
   const [miniFireTrucks, setMiniFireTrucks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    fetch(
+      "https://speedy-nook-server.vercel.app/details/subCategory/sportsCars"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setSportsCars(data);
+        setIsLoading(false);
+      });
+  }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/details/subCategory/sportsCars")
+    fetch("https://speedy-nook-server.vercel.app/details/subCategory/trucks")
       .then((res) => res.json())
-      .then((data) => setSportsCars(data));
+      .then((data) => {
+        setTrucks(data);
+        setIsLoading(false);
+      });
   }, []);
+
   useEffect(() => {
-    fetch("http://localhost:5000/details/subCategory/trucks")
+    fetch(
+      "https://speedy-nook-server.vercel.app/details/subCategory/miniFireTrucks"
+    )
       .then((res) => res.json())
-      .then((data) => setTrucks(data));
-  }, []);
-  useEffect(() => {
-    fetch("http://localhost:5000/details/subCategory/miniFireTrucks")
-      .then((res) => res.json())
-      .then((data) => setMiniFireTrucks(data));
+      .then((data) => {
+        setMiniFireTrucks(data);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
@@ -39,41 +54,72 @@ const Category = () => {
         </TabList>
 
         {/* Sports Car */}
-        <TabPanel>
-          <div className="flex flex-col md:flex-row items-center  gap-11 justify-center">
-            {sportsCars.map((sportsCar) => {
-              return (
-                <SportsCar
-                  key={sportsCar._id}
-                  sportsCar={sportsCar}
-                ></SportsCar>
-              );
-            })}
+        {isLoading ? (
+          <div className="text-center">
+            <img
+              className="h-40 w-40  mx-auto"
+              src="https://cdn.pixabay.com/animation/2022/10/11/03/16/03-16-39-160_512.gif"
+              alt=""
+            />
           </div>
-        </TabPanel>
+        ) : (
+          <TabPanel>
+            <div className="flex flex-col md:flex-row items-center  gap-11 justify-center">
+              {sportsCars.map((sportsCar) => {
+                return (
+                  <SportsCar
+                    key={sportsCar._id}
+                    sportsCar={sportsCar}
+                  ></SportsCar>
+                );
+              })}
+            </div>
+          </TabPanel>
+        )}
 
         {/* Truck */}
-        <TabPanel>
-          <div className="flex flex-col md:flex-row items-center  gap-11 justify-center">
-            {trucks.map((truck) => {
-              return <Truck key={truck._id} truck={truck}></Truck>;
-            })}
+
+        {isLoading ? (
+          <div className="text-center">
+            <img
+              className="h-40 w-40  mx-auto"
+              src="https://cdn.pixabay.com/animation/2022/10/11/03/16/03-16-39-160_512.gif"
+              alt=""
+            />
           </div>
-        </TabPanel>
+        ) : (
+          <TabPanel>
+            <div className="flex flex-col md:flex-row items-center  gap-11 justify-center">
+              {trucks.map((truck) => {
+                return <Truck key={truck._id} truck={truck}></Truck>;
+              })}
+            </div>
+          </TabPanel>
+        )}
 
         {/* Mini Fire Truck */}
-        <TabPanel>
-          <div className="flex flex-col md:flex-row items-center  gap-11 justify-center">
-            {miniFireTrucks.map((minFireTruck) => {
-              return (
-                <MiniFireTruck
-                  key={minFireTruck._id}
-                  miniFireTruck={minFireTruck}
-                ></MiniFireTruck>
-              );
-            })}
+        {isLoading ? (
+          <div className="text-center">
+            <img
+              className="h-40 w-40  mx-auto"
+              src="https://cdn.pixabay.com/animation/2022/10/11/03/16/03-16-39-160_512.gif"
+              alt=""
+            />
           </div>
-        </TabPanel>
+        ) : (
+          <TabPanel>
+            <div className="flex flex-col md:flex-row items-center  gap-11 justify-center">
+              {miniFireTrucks.map((minFireTruck) => {
+                return (
+                  <MiniFireTruck
+                    key={minFireTruck._id}
+                    miniFireTruck={minFireTruck}
+                  ></MiniFireTruck>
+                );
+              })}
+            </div>
+          </TabPanel>
+        )}
       </Tabs>
     </div>
   );

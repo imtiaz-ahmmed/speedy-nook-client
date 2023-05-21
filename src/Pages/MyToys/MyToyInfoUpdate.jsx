@@ -20,7 +20,7 @@ const MyToyInfoUpdate = () => {
       detailDescription: detailDescription,
     };
 
-    fetch(`http://localhost:5000/details/update/${_id}`, {
+    fetch(`https://speedy-nook-server.vercel.app/details/update/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

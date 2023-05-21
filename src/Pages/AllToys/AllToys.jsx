@@ -8,7 +8,7 @@ const AllToys = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/details")
+    fetch("https://speedy-nook-server.vercel.app/details")
       .then((res) => res.json())
       .then((data) => {
         setAllToys(data);

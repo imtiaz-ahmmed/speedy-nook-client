@@ -33,7 +33,9 @@ const router = createBrowserRouter([
         path: "details/update/:id",
         element: <MyToyInfoUpdate></MyToyInfoUpdate>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/details/update/${params.id}`),
+          fetch(
+            `https://speedy-nook-server.vercel.app/details/update/${params.id}`
+          ),
       },
       {
         path: "/add-toys",
@@ -67,7 +69,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/details/subCategory/${params.id}`),
+          fetch(
+            `https://speedy-nook-server.vercel.app/details/subCategory/${params.id}`
+          ),
       },
     ],
   },
