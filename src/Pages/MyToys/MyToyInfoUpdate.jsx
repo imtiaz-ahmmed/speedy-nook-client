@@ -20,13 +20,16 @@ const MyToyInfoUpdate = () => {
       detailDescription: detailDescription,
     };
 
-    fetch(`https://speedy-nook-server.vercel.app/details/update/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateToyDetails),
-    })
+    fetch(
+      `https://speedy-nook-server-production.up.railway.app/details/update/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateToyDetails),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

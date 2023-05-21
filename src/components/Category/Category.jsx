@@ -12,7 +12,7 @@ const Category = () => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     fetch(
-      "https://speedy-nook-server.vercel.app/details/subCategory/sportsCars"
+      "https://speedy-nook-server-production.up.railway.app/details/subCategory/sportsCars"
     )
       .then((res) => res.json())
       .then((data) => {
@@ -22,7 +22,9 @@ const Category = () => {
   }, []);
 
   useEffect(() => {
-    fetch("https://speedy-nook-server.vercel.app/details/subCategory/trucks")
+    fetch(
+      "https://speedy-nook-server-production.up.railway.app/details/subCategory/trucks"
+    )
       .then((res) => res.json())
       .then((data) => {
         setTrucks(data);
@@ -32,7 +34,7 @@ const Category = () => {
 
   useEffect(() => {
     fetch(
-      "https://speedy-nook-server.vercel.app/details/subCategory/miniFireTrucks"
+      "https://speedy-nook-server-production.up.railway.app/details/subCategory/miniFireTrucks"
     )
       .then((res) => res.json())
       .then((data) => {

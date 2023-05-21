@@ -12,7 +12,9 @@ const MyToys = () => {
   const [sortOrder, setSortOrder] = useState("asc"); // "asc" for low to high, "desc" for high to low
 
   useEffect(() => {
-    fetch(`https://speedy-nook-server.vercel.app/myToys/${user?.email}`)
+    fetch(
+      `https://speedy-nook-server-production.up.railway.app/myToys/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyToys(data);
@@ -31,9 +33,12 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result) {
-        fetch(`https://speedy-nook-server.vercel.app/details/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://speedy-nook-server-production.up.railway.app/details/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

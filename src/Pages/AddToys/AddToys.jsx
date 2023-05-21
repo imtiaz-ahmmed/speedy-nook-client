@@ -30,7 +30,7 @@ const AddToys = () => {
       detailDescription: detailDescription,
     };
 
-    fetch("https://speedy-nook-server.vercel.app/details", {
+    fetch("https://speedy-nook-server-production.up.railway.app/details", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         element: <MyToyInfoUpdate></MyToyInfoUpdate>,
         loader: ({ params }) =>
           fetch(
-            `https://speedy-nook-server.vercel.app/details/update/${params.id}`
+            `https://speedy-nook-server-production.up.railway.app/details/update/${params.id}`
           ),
       },
       {
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://speedy-nook-server.vercel.app/details/subCategory/${params.id}`
+            `https://speedy-nook-server-production.up.railway.app/details/subCategory/${params.id}`
           ),
       },
     ],
