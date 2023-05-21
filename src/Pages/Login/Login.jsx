@@ -3,6 +3,7 @@ import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
 import { AuthContext } from "../../providers/AuthProviders";
+import Swal from "sweetalert2";
 const Login = () => {
   useTitle("Speedy Nook | Login");
   const { signIn, googleSignIn } = useContext(AuthContext);
@@ -22,8 +23,13 @@ const Login = () => {
         setLoginError("");
         console.log(loggedUser);
         form.reset;
-        alert("Login Successful");
-        //navigate(from, { replace: true });
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Log In Successful!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/");
       })
       .catch((error) => {
