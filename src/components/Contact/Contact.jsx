@@ -14,7 +14,11 @@ const Contact = () => {
     form.reset();
   };
   return (
-    <div className="bg-fuchsia-100  p-12">
+    <div
+      className="bg-fuchsia-100  p-12"
+      data-aos="fade-up"
+      data-aos-duration="1500"
+    >
       <div className="hero  ">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">

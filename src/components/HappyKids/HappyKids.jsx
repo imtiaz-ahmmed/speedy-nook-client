@@ -2,7 +2,11 @@ import React from "react";
 
 const HappyKids = () => {
   return (
-    <div className="bg-yellow-50 p-12">
+    <div
+      className="bg-yellow-50 p-12"
+      data-aos="flip-up"
+      data-aos-duration="2500"
+    >
       <h2 className="text-green-500 text-5xl font-bold mb-12 pt-12 text-center">
         Happy Kids
       </h2>
