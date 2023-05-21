@@ -25,7 +25,8 @@
     "react-tabs": "^6.0.1",
     "react-tooltip": "^5.13.0",
     "sort-by": "^1.2.0",
-    "sweetalert-react": "^0.4.11"
+    "sweetalert-react": "^0.4.11",
+    "sweetalert2": "^11.7.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

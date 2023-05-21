@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import useTitle from "../../Hooks/useTitle";
 import { AuthContext } from "../../providers/AuthProviders";
 import MyToysRow from "./MyToysRow";
-
+import Swal from "sweetalert2";
 const MyToys = () => {
   useTitle("Speedy Nook | My Toys");
+
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
@@ -17,25 +18,37 @@ const MyToys = () => {
       });
   }, [user?.email]);
 
-  console.log(myToys);
-
   const handleDelete = (id) => {
-    const proceed = confirm("Are You sure you want to delete");
-    if (proceed) {
-      fetch(`http://localhost:5000/details/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data.deletedCount > 0) {
-            alert("deleted successful");
-            const remaining = myToys.filter((myToy) => myToy._id !== id);
-            setMyToys(remaining);
-          }
-        });
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result) {
+        fetch(`http://localhost:5000/details/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                "Deleted!",
+                "Your added toy has been deleted.",
+                "success"
+              );
+              const remaining = myToys.filter((myToy) => myToy._id !== id);
+              setMyToys(remaining);
+            }
+          });
+      }
+    });
   };
+
   return (
     <div className="overflow-x-auto w-full p-6">
       {isLoading ? (

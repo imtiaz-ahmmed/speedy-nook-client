@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import useTitle from "../../Hooks/useTitle";
 import { AuthContext } from "../../providers/AuthProviders";
-
+import Swal from "sweetalert2";
 const AddToys = () => {
   useTitle("Speedy Nook | Add Toys");
   const { user } = useContext(AuthContext);
@@ -41,7 +41,11 @@ const AddToys = () => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged == true) {
-          alert("Toy Added");
+          Swal.fire({
+            title: "Added Successfully!",
+            icon: "success",
+            showConfirmButton: false,
+          });
           form.reset();
         } else {
           alert("Waring! Failed to Add.");
